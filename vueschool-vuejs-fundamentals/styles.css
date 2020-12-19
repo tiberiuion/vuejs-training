@@ -1,0 +1,23 @@
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(#f1aa88, #c96f45);
+    font-family: sans-serif;
+    padding: 1vh;
+}
+
+#shopping-list {
+    display: flex;
+    flex-flow: column;
+    background:#ffffff;
+    padding: 8px;
+    border-radius: 1vh;
+}
