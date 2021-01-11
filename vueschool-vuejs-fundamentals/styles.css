@@ -21,3 +21,12 @@ body {
     padding: 8px;
     border-radius: 1vh;
 }
+
+.form-controls {
+    width: 100%;
+    display: flex;
+}
+
+.form-controls input {
+    flex-grow: 1
+}

@@ -14,9 +14,14 @@
         <ul>
             <li v-for="item in items">{{item}}</li>
         </ul>
-        <!-- use v-model to tie input value to newItem value -->
-        <!-- this is now reactive and every time it gets updated it also updated the newItem string -->
-        <input v-model="newItem" type="text" placeholder="Add an item">
+        <div class="form-controls">
+            <!-- updated newItem with input value when enter key is released -->
+            <input v-model="newItem" type="text" placeholder="Add an item" v-on:keyup.enter="items.push(newItem)">
+            <!-- add button and attach click event -->
+            <button class="btn btn-primary" v-on:click="items.push(newItem)">
+                Save item
+            </button>
+        </div>
     </div>
 
     <script>
@@ -24,7 +29,6 @@
             el:'#shopping-list',
             data: {
                 header: 'Vue is ready to party',
-                // add new item
                 newItem:'',
                 items: [
                     "party shrimp",
