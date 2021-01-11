@@ -12,11 +12,11 @@
     <div id="shopping-list">
         <h1>{{header.toLocaleUpperCase()}}</h1>
         <ul>
-            <!-- Adding new listitems via for loop -->
-            <!-- Basically it reads as: create an li for each item in the items array -->
             <li v-for="item in items">{{item}}</li>
         </ul>
-        <input type="text" v-model="header">
+        <!-- use v-model to tie input value to newItem value -->
+        <!-- this is now reactive and every time it gets updated it also updated the newItem string -->
+        <input v-model="newItem" type="text" placeholder="Add an item">
     </div>
 
     <script>
@@ -24,6 +24,8 @@
             el:'#shopping-list',
             data: {
                 header: 'Vue is ready to party',
+                // add new item
+                newItem:'',
                 items: [
                     "party shrimp",
                     "big ass cake",
