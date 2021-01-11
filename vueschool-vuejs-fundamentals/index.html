@@ -15,10 +15,8 @@
             <li v-for="item in items">{{item}}</li>
         </ul>
         <div class="form-controls">
-            <!-- updated newItem with input value when enter key is released -->
-            <input v-model="newItem" type="text" placeholder="Add an item" v-on:keyup.enter="items.push(newItem)">
-            <!-- add button and attach click event -->
-            <button class="btn btn-primary" v-on:click="items.push(newItem)">
+            <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="items.push(newItem)">
+            <button class="btn btn-primary" @click="items.push(newItem)">
                 Save item
             </button>
         </div>
