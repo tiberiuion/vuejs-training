@@ -15,8 +15,9 @@
             <li v-for="item in items">{{item}}</li>
         </ul>
         <div class="form-controls">
-            <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="items.push(newItem)">
-            <button class="btn btn-primary" @click="items.push(newItem)">
+            <!-- remove logic from template and add to methods object below  -->
+            <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="saveItem">
+            <button class="btn btn-primary" @click="saveItem">
                 Save item
             </button>
         </div>
@@ -34,6 +35,14 @@
                     "alcohol",
                     "strippers"
                 ]
+            },
+            //create methods object that contains more complex logic
+            methods: {
+                saveItem: function() {
+                    this.items.push(this.newItem)
+                    //clears the data from the input. Best practice not to leave data lying around.
+                    this.newItem =''
+                }
             }
         })
     </script>
