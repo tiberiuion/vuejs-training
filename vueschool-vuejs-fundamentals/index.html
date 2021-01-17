@@ -10,11 +10,16 @@
 </head>
 <body>
     <div id="shopping-list">
-        <h1>{{header.toLocaleUpperCase()}}</h1>
+        <div class="header">
+            <h1>{{header.toLocaleUpperCase()}}</h1>
+            <button v-if="state === 'default'" class="btn btn-primary" @click="changeState('edit')">add item</button>
+            <button v-else class="btn btn-cancel" @click="changeState('default')">cancel</button>
+        </div>
         <ul>
             <li v-for="item in items">{{item}}</li>
         </ul>
-        <div class="form-controls">
+        <p v-if="items.length === 0">Nice job! You've purchased all your items</p>
+        <div v-if="state === 'edit'" class="form-controls">
             <!-- remove logic from template and add to methods object below  -->
             <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="saveItem">
             <button class="btn btn-primary" @click="saveItem">
@@ -25,15 +30,16 @@
 
     <script>
         var shoppingList = new Vue({
-            el:'#shopping-list',
+            el: '#shopping-list',
             data: {
+                state: 'default',
                 header: 'Vue is ready to party',
-                newItem:'',
+                newItem: '',
                 items: [
-                    "party shrimp",
-                    "big ass cake",
-                    "alcohol",
-                    "strippers"
+                    // "party shrimp",
+                    // "big ass cake",
+                    // "alcohol",
+                    // "strippers"
                 ]
             },
             //create methods object that contains more complex logic
@@ -42,6 +48,11 @@
                     this.items.push(this.newItem)
                     //clears the data from the input. Best practice not to leave data lying around.
                     this.newItem =''
+                },
+                changeState: function(newState) {
+                    this.state = newState;
+
+                    this.newItem = '';
                 }
             }
         })
