@@ -53,3 +53,8 @@ body {
 .btn-cancel:hover {
     background-color: #c75d5d;
 }
+
+button.btn:disabled {
+    background-color:#ccc;
+    color:#888;
+}

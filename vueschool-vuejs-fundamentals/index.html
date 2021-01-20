@@ -22,7 +22,7 @@
         <div v-if="state === 'edit'" class="form-controls">
             <!-- remove logic from template and add to methods object below  -->
             <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="saveItem">
-            <button class="btn btn-primary" @click="saveItem">
+            <button v-bind:disabled="newItem.length === 0" class="btn btn-primary" @click="saveItem">
                 Save item
             </button>
         </div>
