@@ -16,11 +16,14 @@
             <button v-else class="btn btn-cancel" @click="changeState('default')">cancel</button>
         </div>
         <ul>
-            <li v-for="item in items">{{item}}</li>
+            <li 
+            v-for="item in items" 
+            :class="{strikeout: item.purchased}"
+            @click="togglePurchase(item)">
+            {{item.label}}</li>
         </ul>
         <p v-if="items.length === 0">Nice job! You've purchased all your items</p>
         <div v-if="state === 'edit'" class="form-controls">
-            <!-- remove logic from template and add to methods object below  -->
             <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="saveItem">
             <button v-bind:disabled="newItem.length === 0" class="btn btn-primary" @click="saveItem">
                 Save item
@@ -36,16 +39,24 @@
                 header: 'Vue is ready to party',
                 newItem: '',
                 items: [
-                    // "party shrimp",
-                    // "big ass cake",
-                    // "alcohol",
-                    // "strippers"
+                    {
+                        label:'party shrimp',
+                        purchased: true
+                    },
+                    {
+                        label:'bog ass cake',
+                        purchased: false
+                    },
+                    {
+                        label:'booze',
+                        purchased: false
+                    }
                 ]
             },
             //create methods object that contains more complex logic
             methods: {
                 saveItem: function() {
-                    this.items.push(this.newItem)
+                    this.items.push({label:this.newItem, purchased: false})
                     //clears the data from the input. Best practice not to leave data lying around.
                     this.newItem =''
                 },
@@ -53,6 +64,9 @@
                     this.state = newState;
 
                     this.newItem = '';
+                },
+                togglePurchase: function(item){
+                    item.purchased = !item.purchased
                 }
             }
         })

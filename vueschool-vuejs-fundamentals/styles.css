@@ -58,3 +58,8 @@ button.btn:disabled {
     background-color:#ccc;
     color:#888;
 }
+
+.strikeout {
+    color: rgba(0,0,0,0.4);
+    text-decoration:line-through;
+}
