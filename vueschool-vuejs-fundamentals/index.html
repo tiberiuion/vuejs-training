@@ -17,7 +17,7 @@
         </div>
         <ul>
             <li 
-            v-for="item in items" 
+            v-for="item in reverseItems" 
             :class="{strikeout: item.purchased}"
             @click="togglePurchase(item)">
             {{item.label}}</li>
@@ -25,6 +25,7 @@
         <p v-if="items.length === 0">Nice job! You've purchased all your items</p>
         <div v-if="state === 'edit'" class="form-controls">
             <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="saveItem">
+            <p>{{characterCount}}/200</p>
             <button v-bind:disabled="newItem.length === 0" class="btn btn-primary" @click="saveItem">
                 Save item
             </button>
@@ -54,6 +55,7 @@
                 ]
             },
             //create methods object that contains more complex logic
+            //compared to computed properties, methods don't have to return a value and can change the data on the page
             methods: {
                 saveItem: function() {
                     this.items.push({label:this.newItem, purchased: false})
@@ -67,6 +69,17 @@
                 },
                 togglePurchase: function(item){
                     item.purchased = !item.purchased
+                }
+            },
+            //  use computer properties when you need to change how data gets displayed on the page
+            //  should not change the data on the page
+            //  must return a value
+            computed: {
+                characterCount(){
+                    return this.newItem.length
+                },
+                reverseItems(){
+                    return this.items.slice(0).reverse()
                 }
             }
         })
