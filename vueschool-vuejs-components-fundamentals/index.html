@@ -16,6 +16,7 @@
         <click-counter></click-counter>
     </div>
     <script type="text/x-template" id="click-counter-template">
+        <!-- template can contain only a single root element -->
         <div>
             <p>Click me:</p>
             <button @click="count++">{{count}}</button>
