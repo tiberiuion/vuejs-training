@@ -4,5 +4,9 @@ Vue.component('plan', {
 })
 
 new Vue({
-    el:'#app'
+    el:'#app',
+    //add data with  plans array to loop through in the markup
+    data: {
+        plans: ['The Single','The Curious', 'The Addict']
+    }
 })
