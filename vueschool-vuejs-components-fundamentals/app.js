@@ -1,15 +1,8 @@
-// vue components have a name and options object like so
-// Vue.component('name', {config object});
-Vue.component('click-counter', {
-    template: '#click-counter-template',
-    //unlike the Vue instanc, a component's data is not an object but a function which returns an object
-    data(){
-        return {
-            count: 0
-        }
-    }
+Vue.component('plan', {
+    template: '#plan-template',
+    props:['name']
 })
 
 new Vue({
-    el: '#app'
+    el:'#app'
 })
