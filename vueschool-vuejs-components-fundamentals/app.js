@@ -1,6 +1,10 @@
 Vue.component('plan', {
     template: '#plan-template',
-    props:['name']
+    //props also accepts an object where the props become keys and the data type is the value
+    props:{
+        name: String,
+        price: Number
+    }
 })
 
 new Vue({
