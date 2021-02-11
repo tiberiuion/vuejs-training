@@ -1,3 +1,5 @@
+//this is a globally registered component
+//generally it's not ideal
 Vue.component('plan-picker', {
     template: '#plan-picker-template',
     //data now becomes a function?
@@ -8,7 +10,10 @@ Vue.component('plan-picker', {
     }
 })
 
-Vue.component('plan', {
+
+//locally defined component
+//can be importent into other components to be used and discarded as needed
+let PlanComponent = {
     template: '#plan-template',
     props:{
         name: {
@@ -16,7 +21,7 @@ Vue.component('plan', {
             required: true
         }
     }
-})
+}
 
 new Vue({
     el:'#app'
