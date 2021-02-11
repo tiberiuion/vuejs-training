@@ -11,15 +11,23 @@
     <div id="app">
         <div class="content">
             <h1 class="title">Coffee Plans</h1>
+            <!-- can reuse component in multiple places, just like with regular components -->
+            <plan-picker></plan-picker>
             <h2 class="subtitle">
                 We travel the world to source the very best single origin coffee for you
             </h2>
-
-            <div class="plans">
-                <plan v-for="plan in plans" :name="plan"></plan>
-            </div>
+            <!-- refactored code to be even more concise -->
+            <plan-picker></plan-picker>
+            
         </div>
     </div>
+
+<script type="text/x-template" id="plan-picker-template">
+    <div class="plans">
+        <plan v-for="plan in plans" :name="plan"></plan>
+    </div>
+</script>
+
     <script type="text/x-template" id="plan-template">
         <div class="plan">
             <div class="description">
