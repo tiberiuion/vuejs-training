@@ -11,9 +11,8 @@ let PlanComponent = {
     }
 }
 
-//this is a globally registered component
-//generally it's not ideal
-Vue.component('plan-picker', {
+//this is now a locally registered component
+let PlanPickerComponent = {
     template: '#plan-picker-template',
     //components is an object
     components: {
@@ -27,9 +26,15 @@ Vue.component('plan-picker', {
            plans: ['The Single','The Curious', 'The Addict']
         }
     }
-})
+}
 
 
 new Vue({
-    el:'#app'
+    el:'#app',
+    //usually good practice to register one component globally and execute code inside it
+    components: {
+        //same principle as above, we want tag-name: component name
+        //Vue is smart and can convert camelcase to kebab-case like so we can use PlanPicker and still use <plan-picker> in the HTML
+        'plan-picker': PlanPickerComponent
+    }
 })
