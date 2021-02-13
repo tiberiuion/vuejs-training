@@ -2,3 +2,7 @@ body {
     background: #dadada;
     color: #222222;
 }
+/* indicates selected plan with a blak border */
+.selected {
+    border: 1px solid black;
+}

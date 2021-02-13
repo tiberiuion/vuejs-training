@@ -5,6 +5,18 @@ let PlanComponent = {
             type: String,
             required: true
         }
+    },
+    //setup selected property to be manipulated via the method below
+    data () {
+        return {
+            selected: false
+        }
+    },
+    //add method that turns selected property to true
+    methods: {
+        select() {
+            this.selected = true
+        }
     }
 }
 
