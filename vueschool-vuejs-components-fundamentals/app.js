@@ -4,12 +4,14 @@ let PlanComponent = {
         name: {
             type: String,
             required: true
+        },
+        selectedPlan: {
+            type: String
         }
     },
-    //setup selected property to be manipulated via the method below
-    data () {
-        return {
-            selected: false
+    computed:{
+        isSelected(){
+            return this.name === this.selectedPlan
         }
     },
     //add method that turns selected property to true
@@ -18,7 +20,6 @@ let PlanComponent = {
             //emits event called select 
             //first prameter is mandatory but the second one is optional. In this case the second param is some data and this is called a payload
             this.$emit('select', this.name)
-            this.selected = true
         }
     }
 }
