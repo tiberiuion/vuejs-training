@@ -26,8 +26,6 @@
 </script>
 
     <script type="text/x-template" id="plan-template">
-        <!-- on lick run selec() function from the PlanComponent in the js file -->
-        <!-- if selected is true, apply selected class. Probably should've called this class something else and not the same as the property -->
         <div class="plan" v-on:click="select" v-bind:class="{selected: isSelected}"> 
             <div class="description">
                 <span class="title">
