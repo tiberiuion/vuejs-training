@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <title>Git profile</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Github profiles</h1>
+        <button v-on:click="fetchApiData('https://api.github.com/users/xxxxxx')" >fetch gihtub info</button>
+        <p v-if="result">{{result.data.login}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data: {
+                message:"hello world",
+                result: "",
+                responseAvailable: false,
+                fetchUrl:"https://api.github.com/users/xxxxxx"
+            },
+            methods: {
+                fetchApiData(url){
+                    axios.get(url)
+                    .then(response => this.result = response)
+                }
+            }
+    })
+    </script>
+    </body>
+</html>
