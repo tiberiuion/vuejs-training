@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slots Exercise</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <page-layout>
+            <template v-slot:header>
+
+            </template>
+
+            <p>Lorem, ipsum dolor.</p>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+
+            <template v-slot:footer></template>
+            
+        </page-layout>
+    </div>
+
+    <!-- <page-layout>
+        <template #header>
+
+        </template>
+
+        <p>Lorem, ipsum dolor.</p>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+
+        <template #footer>
+
+        </template>
+    </page-layout> -->
+    
+    <script type="text/x-template" id="page-layout-template">
+        <div>
+            <slot name='header'>
+                <h1>This is the header</h1>
+            </slot>
+            <slot></slot>
+            <slot name='footer'>
+                <p>his is the footer</p>
+            </slot>
+        </div>
+    </script>
+    
+    <script>
+        let PageLayout = {
+            template: '#page-layout-template',
+            data () {
+                return {
+                    completed: false
+                }
+            }
+        }
+            
+        new Vue({
+            el: '#app', 
+            components: {
+                'page-layout': PageLayout
+            }
+        })
+    </script>
+</body>
+</html>
